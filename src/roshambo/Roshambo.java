@@ -12,7 +12,7 @@ public class Roshambo extends ConsoleProgram {
         randomGenerator.setSeed(0);
 
         while (true) {
-            print("请输入你要出手势（“石头”、“剪刀”、“布”），或输入“退出”结束游戏：");
+            print("请输入你要出的手势（“石头”、“剪刀”、“布”），或输入“退出”结束游戏：");
             String yourShape = readLine();
 
             // 如果玩家输入的是退出，则结束游戏
