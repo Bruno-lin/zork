@@ -43,7 +43,7 @@ public class Roshambo extends ConsoleProgram {
             } else if (yourShape == "布") {
                 if (computerShape == "石头") {
                     printWinMessage(yourShape, computerShape);
-                } else if (computerShape == "剪刀") {
+                } else if (computerShape == "石头") {
                     printLoseMessage(yourShape, computerShape);
                 } else {
                     printTieMessage(yourShape);
