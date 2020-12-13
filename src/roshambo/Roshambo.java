@@ -9,7 +9,6 @@ public class Roshambo extends ConsoleProgram {
 
     public void run() {
         RandomGenerator randomGenerator = RandomGenerator.getInstance();
-        randomGenerator.setSeed(0);
 
         while (true) {
             print("请输入你要出的手势（“石头”、“剪刀”、“布”），或输入“退出”结束游戏：");
