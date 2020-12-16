@@ -12,16 +12,6 @@ public class Player extends Creature{
         super(name, role, 1);
     }
 
-    public String useHealthPotion() {
-        if (hpPotions >= 1) {
-            setCurrHp(getCurHp() + 25);  // setCurrHp会自动处理满血溢出的情况
-            hpPotions--;
-            return "还剩" + hpPotions + "瓶回血药。";
-        } else {
-            return "回血药用完了。";
-        }
-    }
-
     /**
      * 获得经验值
      * @param enemy 被玩家杀死的敌人
