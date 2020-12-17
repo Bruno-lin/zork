@@ -84,16 +84,16 @@ public class Player extends Creature{
         int attackMaxIncrease = 0;
         switch (role) {
             case "战士":
-                hpMaxIncrease = 24;
-                attackMaxIncrease = 14;
+                hpMaxIncrease = 12;
+                attackMaxIncrease = 7;
                 break;
             case "游侠":
-                hpMaxIncrease = 19;
+                hpMaxIncrease = 10;
                 attackMaxIncrease = 19;
                 break;
             case "术士":
-                hpMaxIncrease = 16;
-                attackMaxIncrease = 22;
+                hpMaxIncrease = 8;
+                attackMaxIncrease = 11;
                 break;
 
         }
