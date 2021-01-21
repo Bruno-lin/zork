@@ -22,7 +22,7 @@ public class Roshambo extends ConsoleProgram {
             // 给电脑随机生成一个手势
             randomGenerator.setSeed(123);
             int index = randomGenerator.nextInt(0, 2);  // 产生一个0-2之间的随机数
-            int index1 = randomGenerator.nextInt(0, 1); // 产生一个0-2之间的随机数
+            int index1 = randomGenerator.nextInt(0, 1); // 产生一个0-1之间的随机数
             int index2 = randomGenerator.nextInt(0, 2); // 产生一个0-2之间的随机数
             System.out.println(index+" "+index1+" "+index2);
             String computerShape = SHAPES[index];                  // 根据此随机数从数组中选择一个手势
@@ -32,7 +32,7 @@ public class Roshambo extends ConsoleProgram {
             if (yourShape.equals("石头")) {
                 if (computerShape1.equals("剪刀")) {
                     printWinMessage(yourShape, computerShape);
-                } else if (computerShape1.equals("布")) {
+                } else if (computerShape.equals("布")) {
                     printLoseMessage(yourShape, computerShape);
                 } else {
                     printTieMessage(yourShape);
@@ -48,7 +48,7 @@ public class Roshambo extends ConsoleProgram {
             } else if (yourShape.equals("布")) {
                 if (computerShape2.equals("石头")) {
                     printWinMessage(yourShape, computerShape);
-                } else if (computerShape2.equals("剪刀")) {
+                } else if (computerShape.equals("剪刀")) {
                     printLoseMessage(yourShape, computerShape);
                 } else {
                     printTieMessage(yourShape);

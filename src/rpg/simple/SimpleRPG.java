@@ -227,7 +227,7 @@ public class SimpleRPG extends ConsoleProgram {
             }
             playerCurrHp += hpIncreased;
             playerPotionsLeft--;
-            println(String.format("成功回血%d。当前血量%d, 还剩%d瓶回血药。", hpIncreased, playerCurrHp, playerPotionsLeft));
+            println(String.format("成功回血%d。当前血量%d/%d, %d瓶回血药。", hpIncreased, playerCurrHp, playerMaxHp, playerPotionsLeft));
         } else {
             println("回血失败：回血药已用完。");
         }
@@ -237,7 +237,7 @@ public class SimpleRPG extends ConsoleProgram {
      * 打印敌人状态：名字，当前血量
      */
     private void printEnemyStatus() {
-        String message = String.format("%s当前血量%d。", enemyName, enemyCurrHp);
+        String message = String.format(" %s当前血量%d。", enemyName, enemyCurrHp);
         println(message);
     }
 
@@ -245,7 +245,7 @@ public class SimpleRPG extends ConsoleProgram {
      * 打印玩家状态：名字，当前血量
      */
     private void printPlayerStatus() {
-        String message = String.format("%s当前血量%d。", playerName, playerCurrHp);
+        String message = String.format(" %s当前血量%d/%d。", playerName, playerCurrHp, playerMaxHp);
         println(message);
     }
 
