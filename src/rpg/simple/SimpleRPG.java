@@ -237,7 +237,7 @@ public class SimpleRPG extends ConsoleProgram {
      * 打印敌人状态：名字，当前血量
      */
     private void printEnemyStatus() {
-        String message = String.format("%s当前血量%d。", enemyName, enemyCurrHp);
+        String message = String.format("%s当前血量%d/%d。", enemyName, enemyCurrHp, enemyMaxHp);
         println(message);
     }
 
