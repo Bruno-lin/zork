@@ -227,7 +227,7 @@ public class SimpleRPG extends ConsoleProgram {
             }
             playerCurrHp += hpIncreased;
             playerPotionsLeft--;
-            println(String.format("成功回血%d。当前血量%d, %d瓶回血药。", hpIncreased, playerCurrHp, playerPotionsLeft));
+            println(String.format("成功回血%d, 当前血量%d, %d瓶回血药。", hpIncreased, playerCurrHp, playerPotionsLeft));
         } else {
             println("回血失败：回血药已用完。");
         }
