@@ -8,9 +8,9 @@ public class RPG extends ConsoleProgram {
     public static final RandomGenerator randomGenerator = RandomGenerator.getInstance();
 
     public void run() {
-        Player player = new Player();
-        Enemy enemy = new Enemy();
-        println(player.helloWorld());             // 输出Hello, World!
-        println(enemy.helloWorld());              // 输出Hello, World!
+        Creature player = new Player();
+        Creature enemy = new Enemy();
+        println(player.hello());             // 输出Hello, World!
+        println(enemy.hello());              // 输出Hello, World!
     }
 }
