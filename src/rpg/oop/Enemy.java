@@ -1,4 +1,8 @@
 package rpg.oop;
 
-public class Enemy {
+import static rpg.oop.RPG.randomGenerator;
+
+public class Enemy extends Creature {
+
+
 }
