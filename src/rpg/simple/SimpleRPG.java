@@ -253,7 +253,7 @@ public class SimpleRPG extends ConsoleProgram {
      * 打印敌人信息
      */
     private void printEnemy() {
-        String message = String.format("『%s』等级为%d的%s，当前血量%d/%d，攻击力是%d-%d。",
+        String message = String.format("『%s』是等级为%d的%s，当前有血量%d/%d，攻击力是%d-%d。",
                 enemyName, enemyLevel, enemyRole, enemyCurrHp, enemyMaxHp, enemyMinAttack, enemyMaxAttack);
         println(message);
     }
@@ -262,7 +262,7 @@ public class SimpleRPG extends ConsoleProgram {
      * 打印玩家信息
      */
     private void printPlayer() {
-        String message = String.format("『%s』等级为%d的%s，当前血量%d/%d，攻击力是%d-%d。",
+        String message = String.format("『%s』是等级为%d的%s，当前有血量%d/%d，攻击力是%d-%d。",
                 playerName, playerLevel, playerRole, playerCurrHp, playerMaxHp, playerMinAttack, playerMaxAttack);
         println(message);
     }
