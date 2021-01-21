@@ -10,7 +10,7 @@ public class RPG extends ConsoleProgram {
     public void run() {
         Creature player = new Player();
         Creature enemy = new Enemy();
-        println(player.hello());             // 输出Hello, World!
-        println(enemy.hello());              // 输出Hello, World!
+        println(player.hello());             // 输出Hello!
+        println(enemy.hello());              // 输出Hello!
     }
 }

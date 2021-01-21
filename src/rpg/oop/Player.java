@@ -106,6 +106,6 @@ public class Player extends Creature{
 
     @Override
     public String hello() {
-        return "Hello，我是一个玩家，Player";
+        return "Hello，我是一个玩家，Player！";
     }
 }
