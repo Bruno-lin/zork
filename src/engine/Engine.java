@@ -65,11 +65,11 @@ public class Engine extends ConsoleProgram {
                 case "搜索":
                     print("DEBUG2 - ");
                     String item = currPlace.getItem();
-                    if (null != item) {
+                    if (null == item) {
+                        println("你什么没找到。");
+                    } else {
                         println("你找到了一个" + item + "！");
                         currPlace.setItem(null);
-                    } else {
-                        println("你什么没找到。");
                     }
                     break;
                 case "退出":
