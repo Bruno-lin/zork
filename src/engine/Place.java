@@ -1,7 +1,6 @@
 package engine;
 
 public class Place {
-
     private String name;    // 当前地点名称
     private Place north;    // 北边的地点
     private Place south;    // 南边的地点

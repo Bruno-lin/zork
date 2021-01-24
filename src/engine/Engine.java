@@ -104,6 +104,48 @@ public class Engine extends ConsoleProgram {
      */
     private void loadRoutes(Scanner scanner) {
         // TODO: 请完成这个函数
+        int nRoutes = scanner.nextInt();
+
+        for (int i = 0; i < nRoutes; i++) {
+            String placeId = scanner.next();
+            String direction = scanner.next();
+            String placeId1 = scanner.next();
+
+            Place place1 = null;
+            Place place2 = null;
+
+            for (Place place : places) {
+                //遍历结果和出发地点对比，如果为true
+                if (place.getName().equals(placeId)) {
+                    place1 = place;                 //赋值给place1
+                }
+                //遍历结果和目标地点对比，如果为true
+                if (place.getName().equals(placeId1)) {
+                    place2 = place;                //赋值给place2
+                }
+            }
+            //如果出发地点或者目标地点不为空
+            if (place1 != null && place2 != null) {
+                switch (direction) {
+                    case "东":
+                        place1.setEast(place2);
+                        place2.setWest(place1);
+                        break;
+                    case "南":
+                        place1.setSouth(place2);
+                        place2.setNorth(place1);
+                        break;
+                    case "西":
+                        place1.setWest(place2);
+                        place2.setEast(place1);
+                        break;
+                    case "北":
+                        place1.setNorth(place2);
+                        place2.setSouth(place1);
+                        break;
+                }
+            }
+        }
     }
 
     /**
