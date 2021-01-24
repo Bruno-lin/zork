@@ -2,7 +2,6 @@ package rpg.oop;
 
 import acm.util.RandomGenerator;
 
-import static rpg.oop.RPG.randomGenerator;
 
 public abstract class Creature {
 
