@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Engine extends ConsoleProgram {
 
-    public static final String GAME_FILE = "res/map-with-message.txt";
+    public static final String GAME_FILE = "res/map-with-item.txt";
 
     private Place currPlace;    // 当前所处的地点
     ArrayList<Place> places;    // 保存所有的地点
@@ -62,6 +62,16 @@ public class Engine extends ConsoleProgram {
                         println("那边好像无路可走了……");
                     }
                     break;
+//                case "搜索":
+//                    print("DEBUG - ");
+//                    String item = currPlace.getItem();
+//                    if (null != item) {
+//                        println("你找到了一个" + item + "！");
+//                        currPlace.setItem(null);
+//                    } else {
+//                        println("你什么没找到。");
+//                    }
+//                    break;
                 case "退出":
                     gameEnded = true;
                     println("欢迎再来！");
@@ -79,6 +89,12 @@ public class Engine extends ConsoleProgram {
     private void moveTo(Place place) {
         println("你现在到了" + place.getName());
         println(place.getMessage());
+        print("DEBUG - ");
+        if (null == (place.getItem())) {
+            println("这里什么都没有。");
+        } else {
+            println("这里有一个" + place.getItem());
+        }
         currPlace = place;
     }
 
@@ -92,6 +108,7 @@ public class Engine extends ConsoleProgram {
             Scanner scanner = new Scanner(new File(GAME_FILE));
             loadPlaces(scanner);
             loadRoutes(scanner);
+            loadItems(scanner);
         } catch (FileNotFoundException e) {
             println("游戏文件读取错误！");
             return false;
@@ -104,27 +121,29 @@ public class Engine extends ConsoleProgram {
      * @param scanner   用来读取输入的scanner对象
      */
     private void loadRoutes(Scanner scanner) {
-        // TODO: 请完成这个函数
-        int nRoutes = scanner.nextInt();
-
+        int nRoutes = scanner.nextInt();         // 路线的数量
+        String title = scanner.next();                //列表
+        
+        // 读取所有路线
         for (int i = 0; i < nRoutes; i++) {
-            String placeId = scanner.next();
+            int placeId = scanner.nextInt();
             String direction = scanner.next();
-            String placeId1 = scanner.next();
+            int placeId1 = scanner.nextInt();
 
-            Place place1 = null;
-            Place place2 = null;
+            Place place1 = places.get(placeId);
+            Place place2 = places.get(placeId1);
 
-            for (Place place : places) {
-                //遍历结果和出发地点对比，如果为true
-                if (place.getName().equals(placeId)) {
-                    place1 = place;                 //赋值给place1
-                }
-                //遍历结果和目标地点对比，如果为true
-                if (place.getName().equals(placeId1)) {
-                    place2 = place;                //赋值给place2
-                }
-            }
+//            //这个地方的冒号就是遍历places的集合，取出每一个元素
+//            for (Place place : places) {
+//                //遍历结果和出发地点对比，如果为true
+//                if (place.getId() == placeId) {
+//                    place1 = place;                 //赋值给place1
+//                }
+//                //遍历结果和目标地点对比，如果为true
+//                if (place.getId() == placeId1) {
+//                    place2 = place;                //赋值给place2
+//                }
+//            }
             //如果出发地点或者目标地点不为空
             if (place1 != null && place2 != null) {
                 switch (direction) {
@@ -156,12 +175,14 @@ public class Engine extends ConsoleProgram {
     private void loadPlaces(Scanner scanner) {
         // 读取地点
         int nPlaces = scanner.nextInt();            // 地点的数量
+        String title = scanner.next();                //列表
 
         // 读取所有地点
         for (int i = 0; i < nPlaces; i++) {
+            int placeId = scanner.nextInt();        // 地点编号
             String placeName = scanner.next();      // 地点的名称
             Place place = new Place(placeName);     // 从Place类别中创建一个实例，并
-            places.add(place);                      // 将这个地点保存进places中
+            places.add(placeId,place);                      // 将这个地点保存进places中
 
             String message = scanner.next();        //地点的信息
             place.setMessage(message);
@@ -169,5 +190,22 @@ public class Engine extends ConsoleProgram {
 
         // 设置初始地点，也就是读进来的第一个地点
         currPlace = places.get(0);
+    }
+
+    /**
+     * 读取宝物
+     * @param scanner
+     */
+    private void loadItems(Scanner scanner) {
+        // 读取路线
+        int nItems = scanner.nextInt();            // 宝物的数量
+        scanner.next();
+        // 读取所有宝物
+        for (int i = 0; i < nItems; i++) {
+            int situation = scanner.nextInt();
+            String treasure = scanner.next();
+            Place place = places.get(situation);
+            place.setItem(treasure);
+        }
     }
 }

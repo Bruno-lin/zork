@@ -1,8 +1,10 @@
 package engine;
 
 public class Place {
+    private int id; // 编号
     private String name;    // 当前地点名称
     private String message; // 地点描述
+    private String item;  //地点存在的宝物
     private Place north;    // 北边的地点
     private Place south;    // 南边的地点
     private Place east;     // 东边的地点
@@ -11,9 +13,34 @@ public class Place {
     public Place(String name) {
         this.name = name;
     }
-    public String getMessage() { return message; }
 
-    public void setMessage(String message) { this.message = message; }
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id=id;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getItem() {
+
+        return item;
+    }
+
+    public void setItem(String item) {
+
+        this.item = item;
+    }
 
     public String getName() {
         return name;
