@@ -62,16 +62,16 @@ public class Engine extends ConsoleProgram {
                         println("那边好像无路可走了……");
                     }
                     break;
-//                case "搜索":
-//                    print("DEBUG - ");
-//                    String item = currPlace.getItem();
-//                    if (null != item) {
-//                        println("你找到了一个" + item + "！");
-//                        currPlace.setItem(null);
-//                    } else {
-//                        println("你什么没找到。");
-//                    }
-//                    break;
+                case "搜索":
+                    print("DEBUG2 - ");
+                    String item = currPlace.getItem();
+                    if (null != item) {
+                        println("你找到了一个" + item + "！");
+                        currPlace.setItem(null);
+                    } else {
+                        println("你什么没找到。");
+                    }
+                    break;
                 case "退出":
                     gameEnded = true;
                     println("欢迎再来！");
