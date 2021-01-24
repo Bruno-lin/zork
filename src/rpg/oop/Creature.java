@@ -12,9 +12,8 @@ public class Creature {
     public int maxAtt;      // 玩家和敌人都有攻击力下限
     public int minAtt;      // 玩家和敌人都有攻击力上限
 
-
-    public Creature() {
-    }
+    public static Player player;
+    public static Enemy enemy;
 
     public Creature(String name, String role, int level) {
         this.name = name;
@@ -33,6 +32,14 @@ public class Creature {
         int damage = randomGenerator.nextInt(minAtt, maxAtt);
         other.curHp -= damage;
         return damage;
+    }
+
+    /**
+     * 攻击信息
+     */
+    public String attackMessage(Creature creature,int damage)
+    {
+        return String.format("%s对%s造成%d点伤害。",this.name,creature.name,damage);
     }
 
     public int getCurHp() {
@@ -54,6 +61,7 @@ public class Creature {
 
     /**
      * 当前所有状态信息
+     *
      * @return 包含了所有信息的字符串
      */
     public String toString() {
@@ -66,11 +74,35 @@ public class Creature {
     void initialize() {
     }
 
-    public String hello() {
-        return "Hello，我是一个生物，Creature！";
+    /**
+     * 判断玩家是否已经死亡
+     *
+     * @return 死亡返回true，未死亡返回false
+     */
+    public boolean isDead() {
+        return curHp <= 0;
     }
 
-    public String helloWorld() {
-        return "Hello, World!";
+    /**
+     * 打印玩家信息
+     */
+    public String printInfo() {
+        return String.format("『%s』是等级为%d的%s，当前有血量%d/%d，攻击力是%d-%d。",
+                name, level, role, curHp, maxHp, minAtt, maxAtt);
     }
+
+    /**
+     * 打印玩家状态：名字，当前血量
+     */
+    public String printStatus() {
+        return String.format("%s当前血量%d/%d。", name, curHp, maxHp);
+    }
+
+//    public String hello() {
+//        return "Hello，我是一个生物，Creature！";
+//    }
+//
+//    public String helloWorld() {
+//        return "Hello, World!";
+//    }
 }

@@ -2,20 +2,23 @@ package rpg.oop;
 
 import static rpg.oop.RPG.randomGenerator;
 
-public class Player extends Creature{
+public class Player extends Creature {
     public int xp;
     public int hpPotions;
-
-    public Player() {};
 
     public Player(String name, String role) {
         super(name, role, 1);
     }
 
+    public static Player createPlayer(String name, String role) {
+        return new Player(name, role);
+    }
+
     /**
      * 获得经验值
+     *
      * @param enemy 被玩家杀死的敌人
-     * @return      增长的经验值
+     * @return 增长的经验值
      */
     public int gainXp(Creature enemy) {
         int baseXp = 20;
@@ -41,6 +44,7 @@ public class Player extends Creature{
 
     /**
      * 计算玩家当前拥有的经验值和升级所需要的经验值
+     *
      * @return 包含了经验值信息的字符串
      */
     public String getXp() {
@@ -104,8 +108,27 @@ public class Player extends Creature{
 
     }
 
-    @Override
-    public String hello() {
-        return "Hello，我是一个玩家，Player！";
+    /**
+     * 使用回血药
+     *
+     */
+    public String useHealthPotion() {
+        if (hpPotions > 0) {
+            int hpIncreased = 25;
+            if (hpIncreased > (maxHp - curHp)) {
+                hpIncreased = maxHp - curHp;
+            }
+            curHp += hpIncreased;
+            hpPotions--;
+            return String.format("成功回血%d。当前血量%d, 还剩%d瓶回血药。", hpIncreased, curHp, hpPotions);
+        } else {
+            return ("回血失败：回血药已用完。");
+        }
     }
+
+
+//    @Override
+//    public String hello() {
+//        return "Hello，我是一个玩家，Player！";
+//    }
 }
