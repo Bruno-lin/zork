@@ -13,6 +13,7 @@ public class Engine extends ConsoleProgram {
 
     private Place currPlace;    // 当前所处的地点
     ArrayList<Place> places;    // 保存所有的地点
+    private ArrayList<String> bag = new ArrayList<>(); //背包
     boolean gameEnded;          // 玩家是否退出游戏
 
     public void run() {
@@ -70,6 +71,18 @@ public class Engine extends ConsoleProgram {
                     } else {
                         println("你找到了一个" + item + "！");
                         currPlace.setItem(null);
+                        bag.add(item);
+                    }
+                    break;
+                case "查看行李":
+                    int nItem = bag.size();
+                    if (nItem == 0){
+                        println("你的行李箱内空无一物。");
+                    }else{
+                        println("你现在共有" + nItem +  "个道具，依次是：");
+                        for (int i = 0; i < nItem;i++){
+                            println(i + 1 + "." + bag.get(i));
+                        }
                     }
                     break;
                 case "退出":
@@ -90,7 +103,7 @@ public class Engine extends ConsoleProgram {
         println("你现在到了" + place.getName());
         println(place.getMessage());
         print("DEBUG - ");
-        if (null == (place.getItem())) {
+        if (null == place.getItem()) {
             println("这里什么都没有。");
         } else {
             println("这里有一个" + place.getItem());
@@ -197,15 +210,15 @@ public class Engine extends ConsoleProgram {
      * @param scanner
      */
     private void loadItems(Scanner scanner) {
-        // 读取路线
+        // 读取宝物
         int nItems = scanner.nextInt();            // 宝物的数量
         scanner.next();
         // 读取所有宝物
         for (int i = 0; i < nItems; i++) {
-            int situation = scanner.nextInt();
+            int itemId = scanner.nextInt();
             String treasure = scanner.next();
-            Place place = places.get(situation);
-            place.setItem(treasure);
+            Place item = places.get(itemId);
+            item.setItem(treasure);
         }
     }
 }
