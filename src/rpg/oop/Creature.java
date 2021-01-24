@@ -1,8 +1,12 @@
 package rpg.oop;
 
+import acm.util.RandomGenerator;
+
 import static rpg.oop.RPG.randomGenerator;
 
-public class Creature {
+public abstract class Creature {
+
+    public static final RandomGenerator randomGenerator = RandomGenerator.getInstance();
 
     public String name;     // 玩家和敌人都有名字
     public String role;     // 玩家和敌人都有角色
@@ -11,9 +15,6 @@ public class Creature {
     public int curHp;       // 玩家和敌人都有当前血量
     public int maxAtt;      // 玩家和敌人都有攻击力下限
     public int minAtt;      // 玩家和敌人都有攻击力上限
-
-    public static Player player;
-    public static Enemy enemy;
 
     public Creature(String name, String role, int level) {
         this.name = name;
@@ -71,8 +72,7 @@ public class Creature {
     /**
      * 初始化玩家/敌人，此方法应该在子类中被overridden
      */
-    void initialize() {
-    }
+    public abstract void initialize();
 
     /**
      * 判断玩家是否已经死亡
@@ -98,11 +98,11 @@ public class Creature {
         return String.format("%s当前血量%d/%d。", name, curHp, maxHp);
     }
 
-//    public String hello() {
-//        return "Hello，我是一个生物，Creature！";
-//    }
-//
-//    public String helloWorld() {
-//        return "Hello, World!";
-//    }
+    public String hello() {
+        return "Hello，我是一个生物，Creature！";
+    }
+
+    public String helloWorld() {
+        return "Hello, World!";
+    }
 }

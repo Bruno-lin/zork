@@ -6,6 +6,10 @@ public class Player extends Creature {
     public int xp;
     public int hpPotions;
 
+    /**
+     * 创建玩家角色
+     */
+
     public Player(String name, String role) {
         super(name, role, 1);
     }
@@ -127,8 +131,8 @@ public class Player extends Creature {
     }
 
 
-//    @Override
-//    public String hello() {
-//        return "Hello，我是一个玩家，Player！";
-//    }
+    @Override
+    public String hello() {
+        return "Hello，我是一个玩家，Player！";
+    }
 }

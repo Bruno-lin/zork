@@ -4,7 +4,6 @@ import acm.program.ConsoleProgram;
 import acm.util.RandomGenerator;
 
 public class RPG extends ConsoleProgram {
-
     public static final RandomGenerator randomGenerator = RandomGenerator.getInstance();
 
     public static Player player;
@@ -61,7 +60,11 @@ public class RPG extends ConsoleProgram {
             println("您的选择无效，请重新输入。");
         }
     }
-
+    /**
+     * 触发一个新的游戏场景
+     *
+     * @param scene 场景名称
+     */
     private void playScene(String scene) {
         println(player.name + "来到了" + scene + "...");
 
@@ -93,7 +96,7 @@ public class RPG extends ConsoleProgram {
             // 每一回合都首先从玩家开始行动
             String userChoice = choose("请选择你的行动", "攻击", "逃跑", "补血", "查看状态");
             if (userChoice.equals("查看状态")) {
-                player.printStatus();
+                println(player.printStatus());
                 continue;
             } else if (userChoice.equals("补血")) {
                 println(player.useHealthPotion());
@@ -109,7 +112,7 @@ public class RPG extends ConsoleProgram {
                 }
             } else if (userChoice.equals("攻击")) {
                 int damage = player.attack(enemy);
-                println(player.attackMessage(enemy,damage));
+                println(player.attackMessage(enemy, damage));
                 println(enemy.printStatus());
             }
 
@@ -117,7 +120,7 @@ public class RPG extends ConsoleProgram {
                 // 如果敌人阵亡，玩家经验值提升
                 println(String.format("你杀死了%s。\n", enemy.name));
                 println("你获得了" + player.gainXp(enemy) + "点经验值。");
-                if(player.checkLevelUp())// 升级检查
+                if (player.checkLevelUp())// 升级检查
                 {
                     println("你升级了！血量恢复满格！");
                 }
@@ -126,8 +129,8 @@ public class RPG extends ConsoleProgram {
                 break;
             } else {
                 // 没阵亡则轮到敌人行动
-                int damage=enemy.attack(player);
-                println(enemy.attackMessage(player,damage));
+                int damage = enemy.attack(player);
+                println(enemy.attackMessage(player, damage));
                 println(player.printStatus());
 
                 // 如果敌人将玩家打死，游戏结束
@@ -138,8 +141,4 @@ public class RPG extends ConsoleProgram {
             }
         }
     }
-//        Creature player = new Player();
-//        Creature enemy = new Enemy();
-//        println(player.hello());             // 输出Hello!
-//        println(enemy.hello());              // 输出Hello!
 }

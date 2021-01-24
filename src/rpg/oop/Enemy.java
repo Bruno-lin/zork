@@ -1,23 +1,16 @@
 package rpg.oop;
 
-import acm.util.RandomGenerator;
-
-import static rpg.oop.RPG.randomGenerator;
-
 public class Enemy extends Creature {
-
-    public static final RandomGenerator randomGenerator = RandomGenerator.getInstance();
-
     private static final String[] ENEMY_NAMES = {"甲", "乙", "丙"};           // 敌人名字
     private static final String[] ENEMY_ROLES = {"路人", "步兵", "盗贼"};     // 敌人角色
-
-    private Enemy(String name, String role, int level) {
-        super(name, role, level);
-    }
 
     /**
      * 创建Enemy
      */
+    private Enemy(String name, String role, int level) {
+        super(name, role, level);
+    }
+
     public static Enemy createEnemy(int level) {
         int index;  // 用于储存数组下标
 
@@ -32,8 +25,10 @@ public class Enemy extends Creature {
         return new Enemy(name, role, level);
     }
 
+    /**
+     * 初始化敌人
+     */
 
-    @Override
     public void initialize() {
         // 该敌人的各种属性
         int baseHp;                 // 基础血量
@@ -85,8 +80,8 @@ public class Enemy extends Creature {
     }
 
 
-//    @Override
-//    public String hello() {
-//        return "Hello，我是一个敌人，Enemy！";
-//    }
+    @Override
+    public String hello() {
+        return "Hello，我是一个敌人，Enemy！";
+    }
 }
