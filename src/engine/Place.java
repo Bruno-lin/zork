@@ -2,6 +2,7 @@ package engine;
 
 public class Place {
     private String name;    // 当前地点名称
+    private String message; // 地点描述
     private Place north;    // 北边的地点
     private Place south;    // 南边的地点
     private Place east;     // 东边的地点
@@ -10,6 +11,9 @@ public class Place {
     public Place(String name) {
         this.name = name;
     }
+    public String getMessage() { return message; }
+
+    public void setMessage(String message) { this.message = message; }
 
     public String getName() {
         return name;

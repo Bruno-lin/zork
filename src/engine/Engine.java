@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Engine extends ConsoleProgram {
 
-    public static final String GAME_FILE = "res/map.txt";
+    public static final String GAME_FILE = "res/map-with-message.txt";
 
     private Place currPlace;    // 当前所处的地点
     ArrayList<Place> places;    // 保存所有的地点
@@ -78,6 +78,7 @@ public class Engine extends ConsoleProgram {
      */
     private void moveTo(Place place) {
         println("你现在到了" + place.getName());
+        println(place.getMessage());
         currPlace = place;
     }
 
@@ -161,6 +162,9 @@ public class Engine extends ConsoleProgram {
             String placeName = scanner.next();      // 地点的名称
             Place place = new Place(placeName);     // 从Place类别中创建一个实例，并
             places.add(place);                      // 将这个地点保存进places中
+
+            String message = scanner.next();        //地点的信息
+            place.setMessage(message);
         }
 
         // 设置初始地点，也就是读进来的第一个地点
