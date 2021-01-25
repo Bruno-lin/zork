@@ -1,7 +1,6 @@
 package rpg_仙侠传;
 
 import acm.program.ConsoleProgram;
-import engine.Place;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +9,7 @@ import java.util.Scanner;
 
 public class Engine extends ConsoleProgram {
 
-    public static final String GAME_FILE = "res/map-with-item.txt";
+    public static final String GAME_FILE = "res/map_paladin.txt";
 
     private Place currPlace;    // 当前所处的地点
     ArrayList<Place> places;    // 保存所有的地点
