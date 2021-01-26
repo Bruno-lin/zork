@@ -2,8 +2,10 @@ package rpg_仙侠传;
 
 import acm.util.RandomGenerator;
 
+import java.io.Serializable;
 
-public abstract class Creature {
+
+public abstract class Creature implements Serializable {
 
     public static final RandomGenerator randomGenerator = RandomGenerator.getInstance();
 
