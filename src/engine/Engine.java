@@ -146,17 +146,6 @@ public class Engine extends ConsoleProgram {
             Place place1 = places.get(placeId);
             Place place2 = places.get(placeId1);
 
-//            //这个地方的冒号就是遍历places的集合，取出每一个元素
-//            for (Place place : places) {
-//                //遍历结果和出发地点对比，如果为true
-//                if (place.getId() == placeId) {
-//                    place1 = place;                 //赋值给place1
-//                }
-//                //遍历结果和目标地点对比，如果为true
-//                if (place.getId() == placeId1) {
-//                    place2 = place;                //赋值给place2
-//                }
-//            }
             //如果出发地点或者目标地点不为空
             if (place1 != null && place2 != null) {
                 switch (direction) {

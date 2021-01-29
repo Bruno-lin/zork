@@ -3,7 +3,7 @@ package rpg_仙侠传;
 import java.io.Serializable;
 
 public class Place implements Serializable {
-    private int id; // 编号
+    // 编号
     private String name;    // 当前地点名称
     private String message; // 地点描述
     private String item;  //地点存在的宝物
@@ -14,16 +14,6 @@ public class Place implements Serializable {
 
     public Place(String name) {
         this.name = name;
-    }
-
-    public int getId()
-    {
-        return id;
-    }
-
-    public void setId(int id)
-    {
-        this.id=id;
     }
 
     public String getMessage() {
@@ -46,10 +36,6 @@ public class Place implements Serializable {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Place getNorth() {

@@ -17,10 +17,10 @@ public class Engine extends ConsoleProgram {
     public static final String BAG_ARCHIVE_FILE = "res/archive.bag";        //背包存档
     public static final String LOGO = "res/logo.txt";
     public static final String MAP = "res/checkMap.txt";
-    public static Player player;
-    public static Enemy enemy;
-    private ArrayList<String> bag = new ArrayList<>(); //背包
+    public Player player;
+    public Enemy enemy;
     ArrayList<Place> places;    // 保存所有的地点
+    private ArrayList<String> bag = new ArrayList<>(); //背包
     private Place currPlace;    // 当前所处的地点
     private boolean gameEnded;          // 玩家是否退出游戏
     private boolean isPass = false;       // 玩家是否退出游戏
@@ -248,7 +248,7 @@ public class Engine extends ConsoleProgram {
      */
     private void loadRoutes(Scanner scanner) {
         int nRoutes = scanner.nextInt();         // 路线的数量
-        String title = scanner.next();                //列表
+        scanner.next();
 
         // 读取所有路线
         for (int i = 0; i < nRoutes; i++) {
@@ -291,7 +291,7 @@ public class Engine extends ConsoleProgram {
     private void loadPlaces(Scanner scanner) {
         // 读取地点
         int nPlaces = scanner.nextInt();            // 地点的数量
-        String title = scanner.next();                //列表
+        scanner.next();
 
         // 读取所有地点
         for (int i = 0; i < nPlaces; i++) {
@@ -316,7 +316,7 @@ public class Engine extends ConsoleProgram {
     private void loadItems(Scanner scanner) {
         // 读取宝物
         int nItems = scanner.nextInt();            // 宝物的数量
-        String title = scanner.next();                //列表
+        scanner.next();
         // 读取所有宝物
         for (int i = 0; i < nItems; i++) {
             int itemId = scanner.nextInt();
@@ -461,14 +461,15 @@ public class Engine extends ConsoleProgram {
 
     /**
      * 隐藏剧情
+     *
      * @param place
      * @return
      */
     private boolean hiddenStory(Place place) {
         if (place.getName().equals("檾山仙市")) {
             println("你现在到了" + place.getName());
-            for (int i = 0; i < bag.size(); i++) {
-                if (bag.get(i).equals("舍利子")) {
+            for (String item : bag) {
+                if (item.equals("舍利子")) {
                     println("官府:" + "抓捕此贼，此贼手上有高僧設利罗");
                     println("少侠您已被捕，此次仙旅失败");
                     gameEnded = true;
@@ -484,16 +485,15 @@ public class Engine extends ConsoleProgram {
 
     /**
      * 读档
-     * @return
      */
-    private boolean readArchive() {
-
+    @SuppressWarnings("unchecked")
+    private void readArchive() {
         File playArchive = new File(PLAYER_ARCHIVE_FILE);
         File placesArchive = new File(PLACES_ARCHIVE_FILE);
         File bagArchive = new File(BAG_ARCHIVE_FILE);
         if (!playArchive.exists() || !placesArchive.exists()) {
             println("错误存档不存在或者不完整，请检测" + PLAYER_ARCHIVE_FILE + "以及" + PLACES_ARCHIVE_FILE + "以及" + BAG_ARCHIVE_FILE);
-            return false;
+            return;
         }
 
         try (FileInputStream fis = new FileInputStream(playArchive);
@@ -506,14 +506,9 @@ public class Engine extends ConsoleProgram {
             player = (Player) ois.readObject();
             currPlace = (Place) ois2.readObject();
             bag = (ArrayList<String>) ois3.readObject();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return true;
     }
 
     /**

@@ -45,15 +45,6 @@ public class Player extends Creature {
     }
 
     /**
-     * 计算玩家当前拥有的经验值和升级所需要的经验值
-     *
-     * @return 包含了经验值信息的字符串
-     */
-    public String getXp() {
-        return xp + "/" + (level * 40);
-    }
-
-    /**
      * 对玩家的各种属性进行初始化
      */
     public void initialize() {
@@ -129,8 +120,4 @@ public class Player extends Creature {
     }
 
 
-    @Override
-    public String hello() {
-        return "Hello，我是一个玩家，Player！";
-    }
 }

@@ -44,23 +44,6 @@ public abstract class Creature implements Serializable {
         return String.format("%s对%s造成%d点伤害。",this.name,creature.name,damage);
     }
 
-    public int getCurHp() {
-        return curHp;
-    }
-
-    /**
-     * 设置当前血量，不能超过该生物的最大血量
-     *
-     * @param hp 设置为的血量
-     */
-    public void setCurrHp(int hp) {
-        if (hp >= maxHp) {
-            curHp = maxHp;
-        } else {
-            curHp = hp;
-        }
-    }
-
     /**
      * 当前所有状态信息
      *
@@ -99,11 +82,4 @@ public abstract class Creature implements Serializable {
         return String.format("%s当前血量%d/%d。", name, curHp, maxHp);
     }
 
-    public String hello() {
-        return "Hello，我是一个生物，Creature！";
-    }
-
-    public String helloWorld() {
-        return "Hello, World!";
-    }
 }
